@@ -1,4 +1,4 @@
-import { booleanAttribute, Directive } from '@angular/core';
+import { booleanAttribute, Directive, Input } from '@angular/core';
 import { BaseHeaderDirective } from './base-header.directive';
 
 @Directive({
@@ -6,7 +6,8 @@ import { BaseHeaderDirective } from './base-header.directive';
   standalone: true,
   inputs: [
     {name: 'foo', alias: 'appSomeHeader'},
-    {name: 'bar', alias: 'appSomeHeaderBar', transform: booleanAttribute}
   ],
 })
-export class SomeHeaderDirective extends BaseHeaderDirective {}
+export class SomeHeaderDirective extends BaseHeaderDirective {
+  @Input({alias: 'appSomeHeaderBar', transform: booleanAttribute}) override bar: boolean = false;
+}
